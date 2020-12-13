@@ -13,7 +13,7 @@ let dateNow = moment().locale('pt-br').format('LLLL');
 
 const dollarNow = async () => {
     const response = await getCurrency();
-    return `O dólar hoje, ${dateNow}, está cotado em ###${formatValue(response.val)}`;
+    return `O dólar hoje, ${dateNow}, está cotado em ${formatValue(response.val)}`;
 }
 
 const bot = new Telegraf(telegramApiKey);
