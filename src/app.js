@@ -1,6 +1,6 @@
 const { Telegraf } = require('telegraf');
 const { markdown, HTML } = require('telegraf/extra');
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 
 const express = require('express');
 const moment = require('moment');
@@ -23,10 +23,10 @@ const dollarNow = async () => {
     const response = await getCurrency();
 
     // little hack to avoid heroku iddling from stop the bot from responding
-    const idlePreventResponse = await fetch(
-        'https://my-currency-telegram-bot.herokuapp.com'
-    );
-    console.log(idlePreventResponse.status);
+    // const idlePreventResponse = await fetch(
+    //     'https://my-currency-telegram-bot.herokuapp.com'
+    // );
+    // console.log(idlePreventResponse.status);
 
     // fetch('https://my-currency-telegram-bot.herokuapp.com/')
     //     .then(idlePreventResponse => console.log(idlePreventResponse.status))
