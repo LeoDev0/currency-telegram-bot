@@ -1,5 +1,4 @@
 const fetch = require('node-fetch');
-// const { currencyApiKey } = require('../config/auth');
 require('dotenv').config();
 
 const baseCurrency = 'USD';
