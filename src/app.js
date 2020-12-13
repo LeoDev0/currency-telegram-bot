@@ -1,5 +1,6 @@
 const { Telegraf } = require('telegraf');
-const { markdown, HTML } = require('telegraf/extra')
+const { markdown, HTML } = require('telegraf/extra');
+const fetch = require('node-fetch');
 
 const express = require('express');
 const moment = require('moment');
@@ -13,20 +14,22 @@ require('dotenv').config();
 const app = express();
 
 const port = process.env.PORT || 3000
-app.get('/', (req, res) => res.send('App is running!'));
+app.get('/', (request, response) => response.send('App is running!'));
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 let dateNow = moment().locale('pt-br').format('LLLL');
 
 const dollarNow = async () => {
-    const response = await getCurrency();
-    // fetch('https://my-currency-telegram-bot.herokuapp.com/') // little hack to avoid heroku iddling from stop the bot from responding
+    // little hack to avoid heroku iddling from stop the bot from responding
+    const idlePreventResponse = await fetch(
+        'https://my-currency-telegram-bot.herokuapp.com'
+    );
+    console.log(idlePreventResponse.status);
+
+    // fetch('https://my-currency-telegram-bot.herokuapp.com/')
     //     .then(idlePreventResponse => console.log(idlePreventResponse.status))
 
-    // ou
-
-    // const idlePreventResponse = await fetch('https://my-currency-telegram-bot.herokuapp.com')
-    // console.log(idlePreventResponse.status)
+    const response = await getCurrency();
     
     return `O dólar hoje, ${dateNow}, está cotado em *${formatValue(response.val)}*`;
 }
