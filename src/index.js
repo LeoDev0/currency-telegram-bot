@@ -1,7 +1,21 @@
+const Telegraf = require('telegraf');
+const moment = require('moment');
+
 const getCurrency = require('./utils/getCurrency'); 
 const formatValue = require('./utils/formatValue');
 
-(async () => {
+const { telegramApiKey } = require('./config/auth');
+
+let dateNow = moment().locale('pt-br').format('LLLL');
+
+const dollarNow = async () => {
     const response = await getCurrency();
-    console.log(formatValue(response.val));
-})();
+    return `O dólar hoje, ${dateNow}, está cotado em ${formatValue(response.val)}`;
+}
+
+const bot = new Telegraf(telegramApiKey);
+
+bot.start((ctx) => ctx.reply("Olá! Quer saber sobre o dólar nesse momento? Digite 'dolarhoje' ou 'dolarhj' para receber a cotação atual nessa data e hora."));
+bot.hears('dolarhoje', async (ctx) => ctx.reply(await dollarNow()));
+bot.hears('dolarhj', async (ctx) => ctx.reply(await dollarNow()));
+bot.launch();

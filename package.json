@@ -1,15 +1,21 @@
 {
-  "name": "telegram-bot",
+  "name": "currency-telegram-bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/index.js",
+    "dev:server": "nodemon --exec ./src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "telegraf": "^3.38.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
