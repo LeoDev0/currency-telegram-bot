@@ -7,7 +7,8 @@ const getCurrency = require('./utils/getCurrency');
 const formatValue = require('./utils/formatValue');
 const sanitizeUserInput = require('./middlewares/sanitizeUserInput');
 
-const { telegramApiKey } = require('./config/auth');
+// const { telegramApiKey } = require('./config/auth');
+require('dotenv').config();
 
 let dateNow = moment().locale('pt-br').format('LLLL');
 
@@ -16,7 +17,7 @@ const dollarNow = async () => {
     return `O dólar hoje, ${dateNow}, está cotado em ${formatValue(response.val)}`;
 }
 
-const bot = new Telegraf(telegramApiKey);
+const bot = new Telegraf(process.env.TELEGRAM_API_KEY);
 
 bot.use(sanitizeUserInput);
 
