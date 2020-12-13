@@ -1,6 +1,7 @@
 const { Telegraf } = require('telegraf');
 const { Markup, markdown, HTML } = require('telegraf/extra')
 
+const express = require('express');
 const moment = require('moment');
 
 const getCurrency = require('./utils/getCurrency'); 
@@ -9,6 +10,12 @@ const sanitizeUserInput = require('./middlewares/sanitizeUserInput');
 
 // const { telegramApiKey } = require('./config/auth');
 require('dotenv').config();
+
+const app = express();
+
+const port = process.env.PORT || 3000
+app.get('/', (req, res) => res.send('App is running!'));
+app.listen(port, () => console.log(`Listening on port ${port}`));
 
 let dateNow = moment().locale('pt-br').format('LLLL');
 
