@@ -20,6 +20,8 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 let dateNow = moment().locale('pt-br').format('LLLL');
 
 const dollarNow = async () => {
+    const response = await getCurrency();
+
     // little hack to avoid heroku iddling from stop the bot from responding
     const idlePreventResponse = await fetch(
         'https://my-currency-telegram-bot.herokuapp.com'
@@ -29,8 +31,6 @@ const dollarNow = async () => {
     // fetch('https://my-currency-telegram-bot.herokuapp.com/')
     //     .then(idlePreventResponse => console.log(idlePreventResponse.status))
 
-    const response = await getCurrency();
-    
     return `O dólar hoje, ${dateNow}, está cotado em *${formatValue(response.val)}*`;
 }
 
