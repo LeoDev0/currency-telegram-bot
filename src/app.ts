@@ -18,10 +18,15 @@ app.get('/', (request: Request, response: Response) => response.send('App is run
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 const dollarNow = async (): Promise<string> => {
-    const dateNow = moment().locale('pt-br').format('LLLL');
-    const response = await getCurrency();
+    try {
+        const dateNow = moment().locale('pt-br').format('LLLL');
+        const response = await getCurrency();
 
-    return `O dólar hoje, ${dateNow}, está cotado em *${formatValue(response.val)}*`;
+        return `O dólar hoje, ${dateNow}, está cotado em *${formatValue(response.val)}*`;
+    } catch (error) {
+        console.log(error);
+        return `Oops. Algo deu errado no nosso servidor! Tente novamente mais tarde.`;
+    }
 }
 
 // @ts-ignore
