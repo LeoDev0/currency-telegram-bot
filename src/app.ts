@@ -1,13 +1,12 @@
 import { Telegraf } from 'telegraf';
 const { markdown, HTML } = require('telegraf/extra');
-// const fetch = require('node-fetch');
 
 import express, { Request, Response } from 'express';
 import moment from 'moment';
 
-const getCurrency = require('./utils/getCurrency'); 
-const formatValue = require('./utils/formatValue');
-const sanitizeUserInput = require('./middlewares/sanitizeUserInput');
+import getCurrency from './utils/getCurrency';
+import formatValue from './utils/formatValue';
+import sanitizeUserInput from './middlewares/sanitizeUserInput';
 
 require('dotenv').config();
 
@@ -18,7 +17,7 @@ app.get('/', (request: Request, response: Response) => response.send('App is run
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 const dollarNow = async () => {
-    const dateNow = moment(). locale('pt-br').format('LLLL');
+    const dateNow = moment().locale('pt-br').format('LLLL');
     const response = await getCurrency();
 
     return `O dólar hoje, ${dateNow}, está cotado em *${formatValue(response.val)}*`;
