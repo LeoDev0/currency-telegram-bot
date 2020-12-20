@@ -1,5 +1,6 @@
 import { Telegraf } from 'telegraf';
-const { markdown, HTML } = require('telegraf/extra');
+// @ts-ignore
+import { markdown, HTML } from 'telegraf/extra';
 
 import express, { Request, Response } from 'express';
 import moment from 'moment';
@@ -16,7 +17,7 @@ const port = process.env.PORT || 3000
 app.get('/', (request: Request, response: Response) => response.send('App is running!'));
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-const dollarNow = async () => {
+const dollarNow = async (): Promise<string> => {
     const dateNow = moment().locale('pt-br').format('LLLL');
     const response = await getCurrency();
 
