@@ -17,9 +17,8 @@ const port = process.env.PORT || 3000
 app.get('/', (request, response) => response.send('App is running!'));
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-let dateNow = moment().locale('pt-br').format('LLLL');
-
 const dollarNow = async () => {
+    const dateNow = moment().locale('pt-br').format('LLLL');
     const response = await getCurrency();
 
     // little hack to avoid heroku iddling from stop the bot from responding
