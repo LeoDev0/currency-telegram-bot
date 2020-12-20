@@ -1,12 +1,12 @@
 import { Telegraf } from 'telegraf';
 // @ts-ignore
 import { markdown, HTML } from 'telegraf/extra';
-
 import express, { Request, Response } from 'express';
 import moment from 'moment';
 
 import getCurrency from './utils/getCurrency';
 import formatValue from './utils/formatValue';
+
 import sanitizeUserInput from './middlewares/sanitizeUserInput';
 
 require('dotenv').config();
