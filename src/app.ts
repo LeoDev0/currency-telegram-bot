@@ -2,7 +2,7 @@ import { Telegraf } from 'telegraf';
 // @ts-ignore
 import { markdown, HTML } from 'telegraf/extra';
 import express, { Request, Response } from 'express';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 import getCurrency from './utils/getCurrency';
 import formatValue from './utils/formatValue';
@@ -19,7 +19,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 const dollarNow = async (): Promise<string> => {
     try {
-        const dateNow = moment().locale('pt-br').format('LLLL');
+        const dateNow = moment().tz('America/Sao_Paulo').locale('pt-br').format('LLLL');
         const response = await getCurrency();
 
         return `O dólar hoje, ${dateNow}, está cotado em *${formatValue(response.val)}*`;
