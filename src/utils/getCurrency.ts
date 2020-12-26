@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
-require('dotenv').config();
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const baseCurrency = 'USD';
 const currencyToConvertTo = 'BRL';
@@ -13,7 +15,7 @@ interface getCurrencyDTO {
 
 const getCurrency = async (): Promise<getCurrencyDTO> => {
     const request = await fetch(
-        `https://free.currconv.com/api/v7/convert?q=${baseCurrency}_${currencyToConvertTo}&apiKey=${process.env.CURRENCY_API_KEY}`
+        `https://free.currconv.com/api/v7/convert?q=${baseCurrency}_${currencyToConvertTo}&apiKey=${process.env.CURRENCY_API_KEY}`,
     );
 
     const jsonData = await request.json();
@@ -24,6 +26,6 @@ const getCurrency = async (): Promise<getCurrencyDTO> => {
         to,
         fr,
     };
-}
+};
 
 export default getCurrency;
