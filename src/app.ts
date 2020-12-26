@@ -1,4 +1,7 @@
 import { Telegraf } from 'telegraf';
+import { TelegrafContext } from 'telegraf/typings/context';
+// import { Extra } from 'telegraf/typings/extra';
+
 // @ts-ignore
 import { markdown, HTML } from 'telegraf/extra';
 import express, { Request, Response } from 'express';
@@ -29,13 +32,12 @@ const dollarNow = async (): Promise<string> => {
     }
 }
 
-// @ts-ignore
-const bot = new Telegraf(process.env.TELEGRAM_API_KEY);
+const bot = new Telegraf(process.env.TELEGRAM_API_KEY!);
 
 bot.use(sanitizeUserInput);
 
-const dollarTodayCommands = ['dólarhoje', 'dolarhoje', 'dólarhj', 'dolarhj']
+const dollarTodayCommands = ['dolarhoje', 'dolarhj']
 
-bot.start((ctx) => ctx.reply("Olá! Quer saber sobre o dólar nesse momento? Digite 'dolarhoje' ou 'dolarhj' para receber a cotação atual nessa data e hora."));
-bot.hears(dollarTodayCommands, async (ctx) => ctx.reply(await dollarNow(), markdown()));
+bot.start((ctx: TelegrafContext) => ctx.reply("Olá! Quer saber sobre o dólar nesse momento? Digite 'dolarhoje' ou 'dolarhj' para receber a cotação atual nessa data e hora."));
+bot.hears(dollarTodayCommands, async (ctx: TelegrafContext) => ctx.reply(await dollarNow(), markdown()));
 bot.launch();
