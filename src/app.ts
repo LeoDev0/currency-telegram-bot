@@ -38,7 +38,7 @@ const dollarNow = async (): Promise<string> => {
     }
 };
 
-const bot = new Telegraf(process.env.TELEGRAM_API_KEY!);
+const bot = new Telegraf(process.env.TELEGRAM_API_KEY);
 
 bot.use(sanitizeUserInput);
 
