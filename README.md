@@ -36,7 +36,7 @@
 
 ## :dart: About ##
 
-A simple telegram currency bot to keep me fastly updated about the chaotic brazilian currency depreciation.
+A simple telegram currency bot to keep me quickly updated about the chaotic brazilian currency depreciation.
 
 ## :rocket: Technologies ##
 
