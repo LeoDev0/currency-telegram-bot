@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
+import moment from 'moment-timezone';
+import formatValue from './formatValue';
 
 dotenv.config();
 
@@ -28,4 +30,21 @@ const getCurrency = async (): Promise<getCurrencyDTO> => {
     };
 };
 
-export default getCurrency;
+const dollarNow = async (): Promise<string> => {
+    try {
+        const dateNow = moment()
+            .tz('America/Sao_Paulo')
+            .locale('pt-br')
+            .format('LLLL');
+        const response = await getCurrency();
+
+        return `O dólar hoje, ${dateNow}, está cotado em *${formatValue(
+            response.val,
+        )}*`;
+    } catch (error) {
+        console.log(error);
+        return `Oops. Algo deu errado no nosso servidor! Tente novamente mais tarde.`;
+    }
+};
+
+export default dollarNow;
