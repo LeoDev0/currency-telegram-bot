@@ -36,7 +36,7 @@
 
 ## :dart: About ##
 
-A simple telegram currency bot to keep me fastly updated about the chaotic brazilian currency depreciation.
+A simple telegram currency bot to keep me quickly updated about the chaotic brazilian currency depreciation.
 
 ## :rocket: Technologies ##
 
@@ -53,7 +53,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/currency-telegram-bot
+$ git clone https://github.com/leodev0/currency-telegram-bot
 
 # Access
 $ cd currency-telegram-bot
