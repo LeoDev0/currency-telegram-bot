@@ -10,10 +10,9 @@ import sanitizeUserInput from './middlewares/sanitizeUserInput';
 dotenv.config();
 
 const bot = new Telegraf(process.env.TELEGRAM_API_KEY);
+const dollarTodayCommands = ['dolarhoje', 'dolarhj'];
 
 bot.use(sanitizeUserInput);
-
-const dollarTodayCommands = ['dolarhoje', 'dolarhj'];
 
 bot.start((ctx: TelegrafContext) =>
     ctx.reply(
