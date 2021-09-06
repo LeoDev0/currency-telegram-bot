@@ -1,7 +1,7 @@
 import { NextFunction } from 'express';
 import { TelegrafContext } from 'telegraf/typings/context';
 
-function removeAccents(newStringWithAccent: string) {
+function removeAccents(newStringWithAccent: string): string {
     let string = newStringWithAccent;
     const accentsMapHex: any = {
         a: /[\xE0-\xE6]/g,
