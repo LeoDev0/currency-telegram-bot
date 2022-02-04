@@ -65,7 +65,7 @@ $ npm install
 # Run the project
 $ npm run dev:server
 
-# The server will initialize in the <http://localhost:3000>
+# The server will initialize at <http://localhost:3000>
 ```
 
 &#xa0;
