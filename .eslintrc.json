@@ -28,7 +28,8 @@
         ],
         "prettier/prettier": "error",
         "no-restricted-syntax": "off",
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "no-console": "off"
     },
     "settings": {
         "import/resolver": {
