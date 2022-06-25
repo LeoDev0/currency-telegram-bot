@@ -57,7 +57,7 @@ const dollarNow = async (): Promise<string> => {
             currencyValue,
         )}*`;
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return `Oops. Algo deu errado no nosso servidor! Tente novamente mais tarde.`;
     }
 };
